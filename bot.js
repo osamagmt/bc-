@@ -1,3 +1,15 @@
+const http = require('http');
+const express = require('express');
+const app = express();
+app.get("/", (request, response) => {
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://tttt.glitch.me/`);
+}, 280000);
+
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const ms = require("ms");
@@ -33,7 +45,7 @@ client.user.setAvatar(argresult);
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+      if (!devs.includes(message.author.id)) return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
   message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
